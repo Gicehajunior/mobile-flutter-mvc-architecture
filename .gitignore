@@ -6,3 +6,14 @@ build
 .flutter-plugins-dependencies
 .idea
 .vscode
+ios
+android
+*.iml 
+analysis_options.yaml
+linux
+macos
+web
+windows
+test
+.metadata
+*.log
