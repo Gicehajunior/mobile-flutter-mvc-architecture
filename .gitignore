@@ -1,8 +1,22 @@
+# Environment
 .env
-.dart_tool
+
+# Flutter & Dart
+.dart_tool/
 .packages
-build
+.buildlog/
 .flutter-plugins
 .flutter-plugins-dependencies
-.idea
-.vscode
+.metadata
+build/
+
+# IDE settings
+.idea/
+.vscode/
+*.iml
+
+# Logs
+*.log
+
+# Mac system files
+.DS_Store
