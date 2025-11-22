@@ -3,21 +3,32 @@ import 'package:go_router/go_router.dart';
 import 'package:mvcflutter/config/view_factory.dart';
 import 'package:mvcflutter/config/view_request.dart';
 
-typedef ControllerView = MVCFRequest Function();
-
 class AppRouter {
 	final List<GoRoute> _routes = [];
 	
-	void route(String path, String name, ControllerView controllerView) {
+	void route(String path, String name, dynamic Function() controllerRequest) {
 		_routes.add(
 			GoRoute(
 				path: path,
 				name: name,
 				builder: (context, state) {
-					final request = controllerView();
-					print("REQUEST PRINT ROUTER TRAIL: $request");
-					final widget = ViewFactory.createView(request);
-					return widget;
+					final result = controllerRequest();
+					print("REQUEST PRINT ROUTER TRAIL: $result");
+					
+					// render widget
+					if (result is MVCFRequest) {
+						return ViewFactory.createView(result);
+					}
+
+					// directly return widget
+					if (result is Widget) {
+						return result;
+					}
+					
+					return result as Widget? ??
+						Center(
+							child: Text("Route returned non-widget data: $result"),
+						);
 				},
 			),	
 		);

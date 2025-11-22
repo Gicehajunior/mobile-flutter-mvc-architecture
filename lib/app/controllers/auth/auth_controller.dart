@@ -1,11 +1,12 @@
+import 'package:mvcflutter/config/controller.dart';
 import 'package:mvcflutter/config/view_request.dart';
 
-class AuthController {
-    const AuthController();
-  
-    MVCFRequest loginView({String? prefilledEmail}) {
+class AuthController extends CI {
+    
+    MVCFRequest loginView({String? prefilledEmail, String? prefilledPassword}) {
         return MVCFRequest( 'auth/login_screen', data: {
-            'email': prefilledEmail
+            'email': prefilledEmail,
+            'password': prefilledPassword
         });
     }
 }
