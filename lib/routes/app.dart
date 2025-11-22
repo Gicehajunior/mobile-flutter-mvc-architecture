@@ -1,7 +1,7 @@
 import 'package:mvcflutter/config/app_router.dart';
-import 'package:mvcflutter/presentation/screens/home/home_screen.dart';
-import 'package:mvcflutter/presentation/screens/auth/login_screen.dart';
+import 'package:mvcflutter/app/controllers/mobile/home_controller.dart';
+import 'package:mvcflutter/app/controllers/auth/auth_controller.dart';
 
 final appRouter = AppRouter()
-  ..route('/', 'home', const HomeScreen())
-  ..route('/login', 'login', const LoginScreen());
+  ..route('/', 'home', () => HomeController().homeView())
+  ..route('/login', 'login', () => AuthController().loginView());
