@@ -94,8 +94,12 @@ class LoginScreen extends ConsumerWidget with DataReceivable {
 								SizedBox(
 									width: double.infinity, 
 									child: ElevatedButton(
-										onPressed: () { 
-											context.go('/');
+										onPressed: () async { 
+											AuthRepository auth = AuthRepository();
+											await auth.authLogin(
+												email: emailController.text.trim(),
+												password: passwordController.text.trim()
+											);
 										},
 										child: const Text('Login'),
 									),
