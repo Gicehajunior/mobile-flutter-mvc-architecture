@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mvcflutter/config/view_interface.dart';
 import 'package:mvcflutter/app/providers/registry_provider.dart';
+import 'package:mvcflutter/public/repos/mobile/auth_repository.dart';
 
 class LoginScreen extends ConsumerWidget with DataReceivable {
 	final String? email;
@@ -60,29 +61,30 @@ class LoginScreen extends ConsumerWidget with DataReceivable {
 								// Forgot password Text
 								SizedBox(
 									width: double.infinity,
-									child: RichText(
-										textAlign: TextAlign.right,
-										text: TextSpan(
-											text: 'Forgot Password? Click ',
-											style: TextStyle(
-												color: Colors.black,
-												fontSize: 12
-											),
-											children: [
-												TextSpan(
-													text: 'here',
+									child: Row(
+										mainAxisAlignment: MainAxisAlignment.end,
+										children: [
+											Text(
+												'Forgot Password? Click ',
+												style: TextStyle(
+													color: Colors.black,
+													fontWeight: FontWeight.bold,
+													fontSize: 12
+												),
+											), 
+											GestureDetector(
+												child: Text('here',
 													style: TextStyle(
 														color: Colors.blue,
-														fontSize: 12,
-														fontWeight: FontWeight.bold
+														fontWeight: FontWeight.bold,
+														fontSize: 12
 													),
-													recognizer: TapGestureRecognizer()
-																	..onTap = () {
-																		context.go('/forgot-password');
-																	}
-												)
-											]
-										)
+												),
+												onTap: () {
+													context.push('/forgot-password');
+												}
+											)
+										]
 									)
 								),
 
@@ -92,8 +94,12 @@ class LoginScreen extends ConsumerWidget with DataReceivable {
 								SizedBox(
 									width: double.infinity, 
 									child: ElevatedButton(
-										onPressed: () { 
-											context.go('/');
+										onPressed: () async { 
+											AuthRepository auth = AuthRepository();
+											await auth.authLogin(
+												email: emailController.text.trim(),
+												password: passwordController.text.trim()
+											);
 										},
 										child: const Text('Login'),
 									),
