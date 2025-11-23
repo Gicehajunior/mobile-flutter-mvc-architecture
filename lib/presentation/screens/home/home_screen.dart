@@ -15,14 +15,14 @@ class HomeScreen extends ConsumerWidget with DataReceivable {
 			body: Center(
 				child: Column(
 				mainAxisAlignment: MainAxisAlignment.center,
-				children: [
-					const Text('Welcome Home'),
-					const SizedBox(height: 16),
-					ElevatedButton(
-						onPressed: () => context.push('/login'),
-						child: const Text('Go to Login'),
-					),
-				],
+					children: [
+						const Text('Welcome Home'),
+						const SizedBox(height: 16),
+						ElevatedButton(
+							onPressed: () => context.push('/login'),
+							child: const Text('Go to Login'),
+						),
+					],
 				),
 			),
 		);
