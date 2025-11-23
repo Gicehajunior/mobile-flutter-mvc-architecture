@@ -182,7 +182,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 
 **Badges:** 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Gicehajunior/mobile-flutter-mvc-architecture/blob/main/License)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Gicehajunior/mobile-flutter-mvc-architecture/blob/main/.License)
 [![Version](https://img.shields.io/badge/Version-1.0.0+1-blue.svg)](https://github.com/Gicehajunior/mobile-flutter-mvc-architecture/releases)
 
 ---
