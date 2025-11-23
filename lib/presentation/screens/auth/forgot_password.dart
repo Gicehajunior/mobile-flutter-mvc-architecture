@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mvcflutter/config/view_interface.dart';
 import 'package:mvcflutter/app/providers/registry_provider.dart';
+import 'package:mvcflutter/public/repos/mobile/auth_repository.dart';
 
 class ForgotPassword extends ConsumerWidget with DataReceivable {
     final String? email;
