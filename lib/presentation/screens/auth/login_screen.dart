@@ -60,29 +60,30 @@ class LoginScreen extends ConsumerWidget with DataReceivable {
 								// Forgot password Text
 								SizedBox(
 									width: double.infinity,
-									child: RichText(
-										textAlign: TextAlign.right,
-										text: TextSpan(
-											text: 'Forgot Password? Click ',
-											style: TextStyle(
-												color: Colors.black,
-												fontSize: 12
-											),
-											children: [
-												TextSpan(
-													text: 'here',
+									child: Row(
+										mainAxisAlignment: MainAxisAlignment.end,
+										children: [
+											Text(
+												'Forgot Password? Click ',
+												style: TextStyle(
+													color: Colors.black,
+													fontWeight: FontWeight.bold,
+													fontSize: 12
+												),
+											), 
+											GestureDetector(
+												child: Text('here',
 													style: TextStyle(
 														color: Colors.blue,
-														fontSize: 12,
-														fontWeight: FontWeight.bold
+														fontWeight: FontWeight.bold,
+														fontSize: 12
 													),
-													recognizer: TapGestureRecognizer()
-																	..onTap = () {
-																		context.go('/forgot-password');
-																	}
-												)
-											]
-										)
+												),
+												onTap: () {
+													context.push('/forgot-password');
+												}
+											)
+										]
 									)
 								),
 

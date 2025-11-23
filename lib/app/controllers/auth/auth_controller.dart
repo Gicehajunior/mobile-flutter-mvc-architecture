@@ -9,4 +9,10 @@ class AuthController extends CI {
             'password': prefilledPassword
         });
     }
+    
+    MVCFRequest forgotPassView({String? prefilledEmail}) {
+        return MVCFRequest( 'auth/forgot_password', data: {
+            'email': prefilledEmail
+        });
+    }
 }
