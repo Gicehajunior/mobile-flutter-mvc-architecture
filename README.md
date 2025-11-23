@@ -22,7 +22,7 @@ Welcome gorgeous! This project is a comprehensive Flutter application built usin
 - **API Integration**: Easy integration with RESTful APIs using Dio.
 
 ## Tech Stack
-- **Programming Language**: C++
+- **Programming Language**: Dart
 - **Frameworks and Libraries**:
   - Flutter
   - Firebase
@@ -33,7 +33,7 @@ Welcome gorgeous! This project is a comprehensive Flutter application built usin
 - **System Requirements**:
   - Flutter SDK
   - Dart SDK
-  - Android Studio (for Android development)
+  - Android Studio (for Android development) or IDE of your choice i.e VSCode
   - Xcode (for iOS development)
 
 ## Installation
