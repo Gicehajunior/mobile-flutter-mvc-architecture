@@ -2,9 +2,9 @@ import 'package:mvcflutter/config/controller.dart';
 import 'package:mvcflutter/config/view_request.dart';
 
 class HomeController extends CI { 
-    MVCFRequest homeView() {
+    ViewRequest homeView() {
         print('HomeController: preparing home screen...');
-        return MVCFRequest('home/home_screen');
+        return ViewRequest('home/home_screen');
     }
 
     Map<String, dynamic> apiTest() {
