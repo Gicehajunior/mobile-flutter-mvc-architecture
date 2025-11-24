@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mvcflutter/config/controller_registry.dart';
+import 'package:mvcflutter/config/provider_registry.dart';
 
-final controllerRegistryProvider = Provider.autoDispose<ControllerRegistry>((ref) {
-    final registry = ControllerRegistry();
+final providersRegistry = Provider.autoDispose<ProviderRegistry>((ref) {
+    final registry = ProviderRegistry();
     ref.onDispose(registry.disposeAll);
     return registry;
 });
