@@ -21,7 +21,7 @@ class AppRouter {
 					print("REQUEST PRINT ROUTER TRAIL: $result");
 					
 					// render widget
-					if (result is MVCFRequest) {
+					if (result is ViewRequest) {
 						return ViewFactory.createView(result);
 					}
 

@@ -1,6 +1,6 @@
-class MVCFRequest {
+class ViewRequest {
     final String key;
     final Map<String, dynamic>? data;
 
-    const MVCFRequest(this.key, {this.data});
+    const ViewRequest(this.key, {this.data});
 }

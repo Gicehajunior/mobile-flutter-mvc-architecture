@@ -8,15 +8,15 @@ class AuthController extends CI {
 
     AuthController({this.data});
     
-    MVCFRequest loginView({String? prefilledEmail, String? prefilledPassword}) {
-        return MVCFRequest( 'auth/login_screen', data: {
+    ViewRequest loginView({String? prefilledEmail, String? prefilledPassword}) {
+        return ViewRequest( 'auth/login_screen', data: {
             'email': prefilledEmail,
             'password': prefilledPassword
         });
     }
     
-    MVCFRequest forgotPassView({String? prefilledEmail}) {
-        return MVCFRequest( 'auth/forgot_password', data: {
+    ViewRequest forgotPassView({String? prefilledEmail}) {
+        return ViewRequest( 'auth/forgot_password', data: {
             'email': prefilledEmail
         });
     }
