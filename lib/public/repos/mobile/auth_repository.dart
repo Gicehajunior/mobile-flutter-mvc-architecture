@@ -11,7 +11,7 @@ class  AuthRepository extends Repository {
         final response = await authController.authenticateUser();
         
         final status = response['status'] ?? 'error';
-        if (status == 'error') {
+        if (status != 'success') {
             this.alert(
                 status: status,
                 title: 'Login Failed',
