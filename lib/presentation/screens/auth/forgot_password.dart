@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart'; 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mvcflutter/config/view_interface.dart';
 import 'package:mvcflutter/app/providers/registry_provider.dart';
@@ -11,20 +9,16 @@ class ForgotPassword extends ConsumerWidget with DataReceivable {
 
     const ForgotPassword({super.key, this.email});
  
-    /**
-     * Well, recieve data from the backend, incase of need for prefill, 
-     * return the data to the UI.
-     */
+    /// Well, recieve data from the backend, incase of need for prefill, 
+    /// return the data to the UI.
     @override
     void recieve(Map<String, dynamic>? data ) {
         print("Received data from AuthController: $data");
     }
 
-    /**
-     * Build the UI skin. 
-     * This build function ensures the Forgot password UI is drawn and applicable fields
-     * are crafted inside the UI container.
-     */
+    /// Build the UI skin. 
+    /// This build function ensures the Forgot password UI is drawn and applicable fields
+    /// are crafted inside the UI container.
     @override
     Widget build(BuildContext context, WidgetRef ref) {
         // as usual, watch the controller registry provider
@@ -72,8 +66,11 @@ class ForgotPassword extends ConsumerWidget with DataReceivable {
                                     width: double.infinity,
                                     child: ElevatedButton(
                                         child: const Text('Forgot Password'),
-                                        onPressed: () {
-                                            //...
+                                        onPressed: () async {
+                                            AuthRepository forgotPassReq = AuthRepository(context);
+											await forgotPassReq.resetPassword(
+												email: emailController.text.trim()
+											);
                                         }
                                     )
                                 )

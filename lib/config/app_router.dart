@@ -6,13 +6,11 @@ import 'package:mvcflutter/config/view_request.dart';
 class AppRouter {
 	final List<GoRoute> _routes = [];
 	
-	/**
-	* Registers a route in the router system.
-	*
-	* @param [path] The URL path for the route.
-	* @param [name] An identifier for the route.
-	* @param [controllerRequest] A function that will be executed when this route is accessed.
-	*/
+	/// Registers a route in the router system.
+	///
+	/// @param [path] The URL path for the route.
+	/// @param [name] An identifier for the route.
+	/// @param [controllerRequest] A function that will be executed when this route is accessed.
 	void route(String path, String name, dynamic Function() controllerRequest) {
 		_routes.add(
 			GoRoute(
@@ -41,14 +39,12 @@ class AppRouter {
 		);
 	}
 
-	/**
-	* Builds and returns a GoRouter instance. 
-	* The router provider gets to call this function on the process of executing
-	* the a specific route.
-	*
-	* @param [initialLocation] The initial route location (defaults to '/').
-	* @return [GoRouter] A GoRouter configured with the defined routes.
-	*/
+	/// Builds and returns a GoRouter instance. 
+	/// The router provider gets to call this function on the process of executing
+	/// the a specific route.
+	///
+	/// @param [initialLocation] The initial route location (defaults to '/').
+	/// @return [GoRouter] A GoRouter configured with the defined routes.
 	GoRouter build({String initialLocation = '/'}) {
 		return GoRouter(
 			initialLocation: initialLocation,

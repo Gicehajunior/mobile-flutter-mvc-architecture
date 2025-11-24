@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mvcflutter/config/view_interface.dart';
@@ -95,7 +94,7 @@ class LoginScreen extends ConsumerWidget with DataReceivable {
 									width: double.infinity, 
 									child: ElevatedButton(
 										onPressed: () async { 
-											AuthRepository auth = AuthRepository();
+											AuthRepository auth = AuthRepository(context);
 											await auth.authLogin(
 												email: emailController.text.trim(),
 												password: passwordController.text.trim()
