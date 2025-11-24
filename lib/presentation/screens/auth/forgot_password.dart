@@ -67,7 +67,7 @@ class ForgotPassword extends ConsumerWidget with DataReceivable {
                                     child: ElevatedButton(
                                         child: const Text('Forgot Password'),
                                         onPressed: () async {
-                                            AuthRepository forgotPassReq = AuthRepository();
+                                            AuthRepository forgotPassReq = AuthRepository(context);
 											await forgotPassReq.resetPassword(
 												email: emailController.text.trim()
 											);
