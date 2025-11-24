@@ -2,21 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mvcflutter/config/view_interface.dart';
-import 'package:mvcflutter/app/providers/registry_provider.dart';
+import 'package:mvcflutter/app/providers/registry_provider.dart'; 
 import 'package:mvcflutter/public/repos/mobile/auth_repository.dart';
 
 class LoginScreen extends ConsumerWidget with DataReceivable {
 	final String? email;
-	final String? password;
-
-	const LoginScreen({super.key, this.email, this.password});
+	final String? password; 
+	
+	LoginScreen({super.key, this.email, this.password});
 
 	@override
 	Widget build(BuildContext context, WidgetRef ref) { 
-		final registry = ref.watch(controllerRegistryProvider);
+		final registry = ref.watch(providersRegistry);
 
 		final emailController = registry.getController('email', text: email ?? '');
-		final passwordController = registry.getController('password', text: password ?? '');
+		final passwordController = registry.getController('password', text: password ?? ''); 
+		final loginBtnProvider = registry.addStateProvider<String>('loginBtn', 'Login');
+		final loginBtnText = ref.watch(loginBtnProvider);
 
 		return Scaffold(
 			appBar: AppBar(title: const Text('Login'), centerTitle: true),
@@ -93,14 +95,23 @@ class LoginScreen extends ConsumerWidget with DataReceivable {
 								SizedBox(
 									width: double.infinity, 
 									child: ElevatedButton(
-										onPressed: () async { 
+										onPressed: () async {  
 											AuthRepository auth = AuthRepository(context);
-											await auth.authLogin(
-												email: emailController.text.trim(),
-												password: passwordController.text.trim()
+											await auth.toggleSubmitBtn(
+												updateLabel: (label) {
+													ref.read(loginBtnProvider.notifier).state = label;
+												},
+												currentBtnText: loginBtnText,
+												temporaryLabel: "Logging in...",
+												callbackFunc: () async {    
+													await auth.authLogin(
+														email: emailController.text.trim(),
+														password: passwordController.text.trim(),
+													);
+												},
 											);
 										},
-										child: const Text('Login'),
+										child: Text(loginBtnText),
 									),
 								),
 								

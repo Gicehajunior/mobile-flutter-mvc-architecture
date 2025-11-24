@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class HomeScreen extends ConsumerWidget with DataReceivable {
 	
 	// constructor
-	const HomeScreen({super.key});
+	HomeScreen({super.key});
 
 	@override
 	Widget build(BuildContext context, WidgetRef ref) {

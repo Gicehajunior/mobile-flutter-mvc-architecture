@@ -22,8 +22,10 @@ class ForgotPassword extends ConsumerWidget with DataReceivable {
     @override
     Widget build(BuildContext context, WidgetRef ref) {
         // as usual, watch the controller registry provider
-        final registry = ref.watch(controllerRegistryProvider);
+        final registry = ref.watch(providersRegistry);
         final emailController = registry.getController('email', text: email ?? '');
+        final resetPasswordBtnProvider = registry.addStateProvider<String>('resetPasswordBtn', 'Reset Password');
+        final resetPasswordBtnText = ref.watch(resetPasswordBtnProvider);
 
         return Scaffold(
             appBar: AppBar(
@@ -65,12 +67,21 @@ class ForgotPassword extends ConsumerWidget with DataReceivable {
                                 SizedBox(
                                     width: double.infinity,
                                     child: ElevatedButton(
-                                        child: const Text('Forgot Password'),
+                                        child: Text(resetPasswordBtnText),
                                         onPressed: () async {
                                             AuthRepository forgotPassReq = AuthRepository(context);
-											await forgotPassReq.resetPassword(
-												email: emailController.text.trim()
-											);
+                                            await forgotPassReq.toggleSubmitBtn(
+                                                updateLabel: (label) {
+                                                    ref.read(resetPasswordBtnProvider.notifier).state = label;
+                                                },
+                                                currentBtnText: ref.watch(resetPasswordBtnProvider),
+                                                temporaryLabel: "Sending...",
+                                                callbackFunc: () async {
+                                                    await forgotPassReq.resetPassword(
+                                                        email: emailController.text.trim(),
+                                                    );
+                                                },
+                                            );
                                         }
                                     )
                                 )
