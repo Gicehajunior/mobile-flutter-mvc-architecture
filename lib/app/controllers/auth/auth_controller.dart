@@ -1,3 +1,4 @@
+import 'package:mvcflutter/config/mvc_exception.dart';
 import 'package:mvcflutter/config/controller.dart';
 import 'package:mvcflutter/config/view_request.dart';
 
@@ -22,6 +23,10 @@ class AuthController extends CI {
     }
 
     Future<Map<String, dynamic>> authenticateUser() async {
+        return {'status': 'error'};
+    }
+
+    Future<Map<String, dynamic>> sendResetPasswordRequest() async {
         return {'status': 'error'};
     }
 }
