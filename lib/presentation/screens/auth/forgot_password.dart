@@ -7,7 +7,7 @@ import 'package:mvcflutter/public/repos/mobile/auth_repository.dart';
 class ForgotPassword extends ConsumerWidget with DataReceivable {
     final String? email;
 
-    const ForgotPassword({super.key, this.email});
+    ForgotPassword({super.key, this.email});
  
     /// Well, recieve data from the backend, incase of need for prefill, 
     /// return the data to the UI.
