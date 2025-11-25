@@ -9,8 +9,7 @@ class  AuthRepository extends Repository {
 
     Future<void> authLogin({required String email, required String password}) async {
         try {
-            if (email.isEmpty) {
-                print("MAPS: $lang");
+            if (email.isEmpty) { 
                 throw CustomException(message: lang['empty_email'] ?? 'Email cannot be empty.');
             }
 
