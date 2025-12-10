@@ -48,7 +48,7 @@ class CustomException implements Exception {
     }
 
     static CustomException _parseBadResponse(DioException error) {
-        final data = error.response?.data;
+        final data = error.response.data;
         
         if (data is Map && data["message"] is String) {
             return CustomException(message: data["message"]);

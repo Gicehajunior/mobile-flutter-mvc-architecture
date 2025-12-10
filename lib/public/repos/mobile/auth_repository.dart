@@ -22,13 +22,14 @@ class  AuthRepository extends Repository {
             
             final status = response['status'] ?? 'error';
             if (status != 'success') { 
-                throw CustomException(message: response?['message'] ?? lang['genericError']!);
+                throw CustomException(message: response['message'] ?? lang['genericError']!);
             }
-
+            
+            if (!context.mounted) return;
             context.push('/dashboard');
         } catch (error) {
             final userError = CustomException.translate(error); 
-            this.alert(status: 'error', title: 'Login Failed', message: userError.message);
+            alert(status: 'error', title: 'Login Failed', message: userError.message);
         }
     }
 
@@ -43,13 +44,14 @@ class  AuthRepository extends Repository {
             
             final status = response['status'] ?? 'error';
             if (status != 'success') { 
-                throw CustomException(message: response?['message'] ?? lang['genericError']!);
+                throw CustomException(message: response['message'] ?? lang['genericError']!);
             }
 
+            if (!context.mounted) return;
             context.push('/login');
         } catch (error) {
             final userError = CustomException.translate(error); 
-            this.alert(status: 'error', title: 'Reset Password', message: userError.message);
+            alert(status: 'error', title: 'Reset Password', message: userError.message);
         }
     }
 }
