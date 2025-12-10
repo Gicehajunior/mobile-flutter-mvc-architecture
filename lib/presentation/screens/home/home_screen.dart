@@ -30,6 +30,6 @@ class HomeScreen extends ConsumerWidget with DataReceivable {
 
 	@override
 	void recieve(Map<String, dynamic>? data) {
-		print("Received data from HomeController: $data");
+		// print("Received data from HomeController: $data");
 	}
 }

@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:mvcflutter/config/mvc_exception.dart';
 import 'package:mvcflutter/public/repos/lang/en.dart';
-import 'package:mvcflutter/public/repos/global/Repository.dart';
+import 'package:mvcflutter/public/repos/global/repository.dart';
 import 'package:mvcflutter/app/controllers/auth/auth_controller.dart';
 
 class  AuthRepository extends Repository {
@@ -17,18 +17,19 @@ class  AuthRepository extends Repository {
                 throw CustomException(message: lang['empty_password'] ?? 'Password cannot be empty.');
             }
 
-            AuthController authController = new AuthController();
+            AuthController authController = AuthController();
             final response = await authController.authenticateUser();
             
             final status = response['status'] ?? 'error';
             if (status != 'success') { 
-                throw CustomException(message: response?['message'] ?? lang['genericError']!);
+                throw CustomException(message: response['message'] ?? lang['genericError']!);
             }
-
+            
+            if (!context.mounted) return;
             context.push('/dashboard');
         } catch (error) {
             final userError = CustomException.translate(error); 
-            this.alert(status: 'error', title: 'Login Failed', message: userError.message);
+            alert(status: 'error', title: 'Login Failed', message: userError.message);
         }
     }
 
@@ -38,18 +39,19 @@ class  AuthRepository extends Repository {
                 throw CustomException(message: lang['empty_email'] ?? 'Email cannot be empty.');
             } 
 
-            AuthController authController = new AuthController();
+            AuthController authController = AuthController();
             final response = await authController.sendResetPasswordRequest();
             
             final status = response['status'] ?? 'error';
             if (status != 'success') { 
-                throw CustomException(message: response?['message'] ?? lang['genericError']!);
+                throw CustomException(message: response['message'] ?? lang['genericError']!);
             }
 
+            if (!context.mounted) return;
             context.push('/login');
         } catch (error) {
             final userError = CustomException.translate(error); 
-            this.alert(status: 'error', title: 'Reset Password', message: userError.message);
+            alert(status: 'error', title: 'Reset Password', message: userError.message);
         }
     }
 }

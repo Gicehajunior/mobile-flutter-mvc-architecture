@@ -133,6 +133,6 @@ class LoginScreen extends ConsumerWidget with DataReceivable {
 
 	@override
 	void recieve(Map<String, dynamic>? data) {
-		print("Received data from AuthController: $data");
+		// print("Received data from AuthController: $data");
 	}
 }
