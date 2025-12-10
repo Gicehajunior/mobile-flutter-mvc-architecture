@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:mvcflutter/config/mvc_exception.dart';
 import 'package:mvcflutter/public/repos/lang/en.dart';
-import 'package:mvcflutter/public/repos/global/Repository.dart';
+import 'package:mvcflutter/public/repos/global/repository.dart';
 import 'package:mvcflutter/app/controllers/auth/auth_controller.dart';
 
 class  AuthRepository extends Repository {
