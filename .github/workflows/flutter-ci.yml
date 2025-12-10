@@ -35,7 +35,7 @@ jobs:
         run: dart format .
 
       - name: Run unit tests
-        run: flutter test --no-pub --coverage test/real
+        run: flutter test --no-pub --coverage
 
       - name: Build Android APK (verification only)
         run: flutter build apk --debug
