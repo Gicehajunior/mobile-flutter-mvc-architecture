@@ -3,8 +3,7 @@ import 'package:mvcflutter/config/controller.dart';
 import 'package:mvcflutter/config/view_request.dart';
 
 class HomeController extends CI { 
-    ViewRequest homeView() {
-        print('HomeController: preparing home screen...');
+    ViewRequest homeView() { 
         return ViewRequest('home/home_screen');
     }
 

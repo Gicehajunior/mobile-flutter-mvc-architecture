@@ -17,8 +17,7 @@ class AppRouter {
 				path: path,
 				name: name,
 				builder: (context, state) {
-					final result = controllerRequest();
-					print("REQUEST PRINT ROUTER TRAIL: $result");
+					final result = controllerRequest(); 
 					
 					// render widget
 					if (result is ViewRequest) {

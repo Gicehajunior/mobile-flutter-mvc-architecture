@@ -13,7 +13,7 @@ class ForgotPassword extends ConsumerWidget with DataReceivable {
     /// return the data to the UI.
     @override
     void recieve(Map<String, dynamic>? data ) {
-        print("Received data from AuthController: $data");
+        // print("Received data from AuthController: $data");
     }
 
     /// Build the UI skin. 
