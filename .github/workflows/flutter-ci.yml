@@ -35,8 +35,9 @@ jobs:
         run: dart format .
 
       - name: Disable default tests
+        if: false 
         run: rm -f test/widget_test.dart
-        
+
       - name: Run unit tests
         run: flutter test --no-pub --coverage
 
