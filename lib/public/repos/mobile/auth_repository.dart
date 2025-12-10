@@ -17,7 +17,7 @@ class  AuthRepository extends Repository {
                 throw CustomException(message: lang['empty_password'] ?? 'Password cannot be empty.');
             }
 
-            AuthController authController = new AuthController();
+            AuthController authController = AuthController();
             final response = await authController.authenticateUser();
             
             final status = response['status'] ?? 'error';
@@ -38,7 +38,7 @@ class  AuthRepository extends Repository {
                 throw CustomException(message: lang['empty_email'] ?? 'Email cannot be empty.');
             } 
 
-            AuthController authController = new AuthController();
+            AuthController authController = AuthController();
             final response = await authController.sendResetPasswordRequest();
             
             final status = response['status'] ?? 'error';
