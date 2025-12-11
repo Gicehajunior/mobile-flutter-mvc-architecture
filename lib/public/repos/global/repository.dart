@@ -20,8 +20,8 @@ class Repository {
         return Center(
             child: SvgPicture.asset(
                 public(key, value),
-                width: width ?? 100,
-                height: height ?? 100,
+                width: width,
+                height: height,
             ),
         );
     }
