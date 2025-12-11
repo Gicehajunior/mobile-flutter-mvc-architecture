@@ -16,10 +16,10 @@ class Repository {
         return basePaths[key]! + relativePath;
     }
 
-    Widget applicationLogo({double height = 100, double width = 100}) {
+    Widget applicationLogo({String key = 'logos', String value = 'svg/default-logo.svg', double height = 100, double width = 100}) {
         return Center(
             child: SvgPicture.asset(
-                public('logos', 'svg/nesthub-logo.svg'),
+                public(key, value),
                 width: width ?? 100,
                 height: height ?? 100,
             ),
