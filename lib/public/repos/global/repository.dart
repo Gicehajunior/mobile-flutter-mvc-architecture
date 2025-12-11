@@ -6,6 +6,26 @@ class Repository {
 
     const Repository(this.context);
 
+    String public(String key, [String relativePath = '']) { 
+        final basePaths = configList['BasePaths'] as Map<String, String>?;
+
+        if (basePaths == null || !basePaths.containsKey(key)) {
+            throw Exception('Invalid asset key: $key');
+        }
+        
+        return basePaths[key]! + relativePath;
+    }
+
+    Widget applicationLogo({double height = 100, double width = 100}) {
+        return Center(
+            child: SvgPicture.asset(
+                public('logos', 'svg/nesthub-logo.svg'),
+                width: width ?? 100,
+                height: height ?? 100,
+            ),
+        );
+    }
+
     Future<void> toggleSubmitBtn({required void Function(String label) updateLabel, required String currentBtnText, String temporaryLabel = "Processing...", required Future<void> Function() callbackFunc}) async {
         final original = currentBtnText; 
         updateLabel(temporaryLabel);
