@@ -4,50 +4,50 @@ import 'package:mvcflutter/config/view_factory.dart';
 import 'package:mvcflutter/config/view_request.dart';
 
 class AppRouter {
-	final List<GoRoute> _routes = [];
-	
-	/// Registers a route in the router system.
-	///
-	/// @param [path] The URL path for the route.
-	/// @param [name] An identifier for the route.
-	/// @param [controllerRequest] A function that will be executed when this route is accessed.
-	void route(String path, String name, dynamic Function() controllerRequest) {
-		_routes.add(
-			GoRoute(
-				path: path,
-				name: name,
-				builder: (context, state) {
-					final result = controllerRequest(); 
-					
-					// render widget
-					if (result is ViewRequest) {
-						return ViewFactory.createView(result);
-					}
+  final List<GoRoute> _routes = [];
 
-					// directly return widget
-					if (result is Widget) {
-						return result;
-					}
-					
-					return result as Widget? ??
-						Center(
-							child: Text("Route returned non-widget data: $result"),
-						);
-				},
-			),	
-		);
-	}
+  /// Registers a route in the router system.
+  ///
+  /// @param [path] The URL path for the route.
+  /// @param [name] An identifier for the route.
+  /// @param [controllerRequest] A function that will be executed when this route is accessed.
+  void route(String path, String name, dynamic Function() controllerRequest) {
+    _routes.add(
+      GoRoute(
+        path: path,
+        name: name,
+        builder: (context, state) {
+          final result = controllerRequest();
 
-	/// Builds and returns a GoRouter instance. 
-	/// The router provider gets to call this function on the process of executing
-	/// the a specific route.
-	///
-	/// @param [initialLocation] The initial route location (defaults to '/').
-	/// @return [GoRouter] A GoRouter configured with the defined routes.
-	GoRouter build({String initialLocation = '/'}) {
-		return GoRouter(
-			initialLocation: initialLocation,
-			routes: _routes,
-		);
-	}
+          // render widget
+          if (result is ViewRequest) {
+            return ViewFactory.createView(result);
+          }
+
+          // directly return widget
+          if (result is Widget) {
+            return result;
+          }
+
+          return result as Widget? ??
+              Center(
+                child: Text("Route returned non-widget data: $result"),
+              );
+        },
+      ),
+    );
+  }
+
+  /// Builds and returns a GoRouter instance.
+  /// The router provider gets to call this function on the process of executing
+  /// the a specific route.
+  ///
+  /// @param [initialLocation] The initial route location (defaults to '/').
+  /// @return [GoRouter] A GoRouter configured with the defined routes.
+  GoRouter build({String initialLocation = '/'}) {
+    return GoRouter(
+      initialLocation: initialLocation,
+      routes: _routes,
+    );
+  }
 }
