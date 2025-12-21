@@ -69,10 +69,18 @@ flutter run
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mvcflutter/app/providers/router_provider.dart';
-import 'public/index.dart';
+import 'package:mvcflutter/public/index.dart'; 
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  MyApp app = MyApp();
+
+  // Initialize services before 
+  //running the app
+  await app.initializeApp();
+
+  // Run the app within ProviderScope for Riverpod 
+  //state management
   runApp(const ProviderScope(child: MyApp()));
 }
 ```
