@@ -94,9 +94,13 @@ mobile-flutter-mvc-architecture/
 │   │   ├── utils/
 │   │   ├── views/
 │   ├── config/
+│   │   ├── app_config.dart
+│   │   ├── app_logger.dart
 │   │   ├── app_router.dart
-│   │   ├── controller_registry.dart
 │   │   ├── controller.dart
+│   │   ├── mvc_exception.dart
+│   │   ├── provider_registry.dart
+│   │   ├── session_manager.dart
 │   │   ├── view_factory.dart
 │   │   ├── view_interface.dart
 │   │   ├── view_list.dart
@@ -108,6 +112,21 @@ mobile-flutter-mvc-architecture/
 │   │   ├── themes/
 │   │   ├── widgets/
 │   ├── public/
+│   │   ├── repos/
+│   │   │   ├── global/
+│   │   │   ├── lang/
+│   │   │   ├── methods/
+│   │   │   ├── mobile/ 
+│   │   ├── assets/
+│   │   │   ├── avatars/
+│   │   │   ├── images/
+│   │   │   ├── logo/
+│   │   │   ├── svg/ 
+│   │   │   ├── videos/ 
+│   │   ├── cache/
+│   │   │   ├── xxx/ 
+│   │   ├── storage/
+│   │   │   ├── xxx/ 
 │   │   ├── index.dart
 │   ├── routes/
 │   │   ├── app.dart
