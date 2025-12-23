@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvcflutter/config/app_config.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Repository {
+  final WidgetRef ref;
   final BuildContext context;
 
-  const Repository(this.context);
+  const Repository(this.context, this.ref);
 
   String public(String key, [String relativePath = '']) {
     final basePaths = configList['BasePaths'] as Map<String, String>?;

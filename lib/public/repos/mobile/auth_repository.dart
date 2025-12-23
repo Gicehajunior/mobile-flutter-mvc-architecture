@@ -5,7 +5,7 @@ import 'package:mvcflutter/public/repos/global/repository.dart';
 import 'package:mvcflutter/app/controllers/auth/auth_controller.dart';
 
 class AuthRepository extends Repository {
-  AuthRepository(super.context);
+  AuthRepository(super.context, super.ref);
 
   Future<void> authLogin(
       {required String email, required String password}) async {
