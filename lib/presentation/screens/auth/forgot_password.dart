@@ -69,7 +69,7 @@ class ForgotPassword extends ConsumerWidget with DataReceivable {
                                     child: ElevatedButton(
                                         child: Text(resetPasswordBtnText),
                                         onPressed: () async {
-                                            AuthRepository forgotPassReq = AuthRepository(context);
+                                            AuthRepository forgotPassReq = AuthRepository(context, ref);
                                             await forgotPassReq.toggleSubmitBtn(
                                                 updateLabel: (label) {
                                                     ref.read(resetPasswordBtnProvider.notifier).state = label;

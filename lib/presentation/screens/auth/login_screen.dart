@@ -96,7 +96,7 @@ class LoginScreen extends ConsumerWidget with DataReceivable {
 									width: double.infinity, 
 									child: ElevatedButton(
 										onPressed: () async {  
-											AuthRepository auth = AuthRepository(context);
+											AuthRepository auth = AuthRepository(context, ref);
 											await auth.toggleSubmitBtn(
 												updateLabel: (label) {
 													ref.read(loginBtnProvider.notifier).state = label;
