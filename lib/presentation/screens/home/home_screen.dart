@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart'; 
-import 'package:mvcflutter/config/view_interface.dart';
+import 'package:go_router/go_router.dart';  
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeScreen extends ConsumerWidget with DataReceivable {
+class HomeScreen extends ConsumerWidget {
 	
 	// constructor
-	HomeScreen({super.key});
+	const HomeScreen({super.key});
 
 	@override
 	Widget build(BuildContext context, WidgetRef ref) {
@@ -26,10 +25,5 @@ class HomeScreen extends ConsumerWidget with DataReceivable {
 				),
 			),
 		);
-	}
-
-	@override
-	void recieve(Map<String, dynamic>? data) {
-		// print("Received data from HomeController: $data");
-	}
+	} 
 }

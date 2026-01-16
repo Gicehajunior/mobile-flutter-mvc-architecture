@@ -5,8 +5,5 @@ class HomeController extends CI {
     ViewRequest homeView() { 
         return ViewRequest('home/home_screen');
     }
-
-    Map<String, dynamic> apiTest() {
-        return {"status": "ok", "time": DateTime.now().toString()};
-    }
+    
 }
