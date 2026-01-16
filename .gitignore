@@ -1,6 +1,3 @@
-# Environment
-.env
-
 # Flutter & Dart
 .dart_tool/
 .packages
