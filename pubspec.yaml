@@ -52,8 +52,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - lib/public/assets/images/
-    - lib/public/assets/logo/
+  - .env
+  - lib/public/assets/images/
+  - lib/public/assets/logo/
 
 l10n:
   arb-dir: lib/public/repos/lang

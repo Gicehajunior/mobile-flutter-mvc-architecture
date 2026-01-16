@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mvcflutter/config/view_interface.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart'; 
 import 'package:mvcflutter/app/providers/registry_provider.dart'; 
 import 'package:mvcflutter/public/repos/mobile/auth_repository.dart';
 
-class LoginScreen extends ConsumerWidget with DataReceivable {
-	final String? email;
-	final String? password; 
+class LoginScreen extends ConsumerWidget {
+	final Map<String, dynamic>? data; 
 	
-	LoginScreen({super.key, this.email, this.password});
+	const LoginScreen({super.key, this.data});
 
 	@override
 	Widget build(BuildContext context, WidgetRef ref) { 
 		final registry = ref.watch(providersRegistry);
 
-		final emailController = registry.getController('email', text: email ?? '');
-		final passwordController = registry.getController('password', text: password ?? ''); 
+		final emailController = registry.getController('email', text: data?['email'] ?? '');
+		final passwordController = registry.getController('password', text: data?['password'] ?? ''); 
 		final loginBtnProvider = registry.addStateProvider<String>('loginBtn', 'Login');
 		final loginBtnText = ref.watch(loginBtnProvider);
 
@@ -118,9 +116,9 @@ class LoginScreen extends ConsumerWidget with DataReceivable {
 								const SizedBox(height: 16),
 
 								// Optional prefilled email display
-								if (email != null)
+								if (data?['email'] != null)
 								Text(
-									'Prefilled email: $email',
+									'Prefilled email: ${data?['email']}',
 									style: TextStyle(color: Colors.grey[700]),
 								),
 							],
@@ -129,10 +127,5 @@ class LoginScreen extends ConsumerWidget with DataReceivable {
 				),
 			),
 		);
-	}
-
-	@override
-	void recieve(Map<String, dynamic>? data) {
-		// print("Received data from AuthController: $data");
-	}
+	} 
 }
