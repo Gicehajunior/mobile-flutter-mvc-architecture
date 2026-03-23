@@ -1,10 +1,10 @@
+import 'package:go_router/go_router.dart';
+
 /// A lightweight abstraction over GoRouterState that 
 /// treats route parameters and query parameters uniformly,
 /// allowing the developer to access request-like data in a 
 /// familiar GET/POST style. Think of it as a mini HTTP request 
 /// object for your in-app routing.
-import 'package:go_router/go_router.dart';
-
 class Request {
   final Map<String, String> params;
   final Map<String, String> query;
