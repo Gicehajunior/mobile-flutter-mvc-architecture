@@ -105,12 +105,12 @@ mobile-flutter-mvc-architecture/
 │   │   ├── app_config.dart
 │   │   ├── app_logger.dart
 │   │   ├── app_router.dart
+│   │   ├── app_request.dart
 │   │   ├── controller.dart
 │   │   ├── mvc_exception.dart
 │   │   ├── provider_registry.dart
 │   │   ├── session_manager.dart
-│   │   ├── view_factory.dart
-│   │   ├── view_interface.dart
+│   │   ├── view_factory.dart 
 │   │   ├── view_list.dart
 │   │   ├── view_request.dart
 │   ├── features/
