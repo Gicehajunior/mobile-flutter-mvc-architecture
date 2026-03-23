@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/legacy.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mvcflutter/config/app_logger.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart'; 
 
 class ProviderRegistry {
   final Map<String, TextEditingController> _controllers = {};
@@ -105,16 +104,13 @@ class ProviderRegistry {
     return addStateProvider<int>(key, initialValue);
   }
 
-  void disposeProviders(WidgetRef ref) {
-    Log.debug('Disposing disposable providers (invalidate)');
-
+  void disposeProviders(WidgetRef ref) { 
     /// Invalidate disposable state providers
     for (final entry in _providers.entries) {
       final key = entry.key;
       final provider = entry.value;
 
-      if (_disposableKeys.contains(key)) {
-        Log.debug('Invalidate Provider [$key]: $provider');
+      if (_disposableKeys.contains(key)) { 
         ref.invalidate(provider);
       }
     }
@@ -124,16 +120,13 @@ class ProviderRegistry {
       final key = entry.key;
       final provider = entry.value;
 
-      if (_disposableKeys.contains(key)) {
-        Log.debug('Invalidate Async Provider [$key]: $provider');
+      if (_disposableKeys.contains(key)) { 
         ref.invalidate(provider);
       }
     }
   }
 
-  void refreshAllProviders(WidgetRef ref) {
-    Log.debug('Refreshing all providers');
-
+  void refreshAllProviders(WidgetRef ref) { 
     for (final provider in _providers.values) {
       final _ = ref.refresh(provider);
     }
