@@ -100,7 +100,7 @@ mobile-flutter-mvc-architecture/
 │   │   ├── providers/
 │   │   ├── services/
 │   │   ├── utils/
-│   │   ├── views/
+│   │   ├── models/
 │   ├── config/
 │   │   ├── app_config.dart
 │   │   ├── app_logger.dart
