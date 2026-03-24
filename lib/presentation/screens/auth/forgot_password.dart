@@ -12,9 +12,10 @@ class ForgotPassword extends ConsumerWidget {
   /// This build function ensures the Forgot password UI is drawn and applicable fields
   /// are crafted inside the UI container.
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // as usual, watch the controller registry provider
+  Widget build(BuildContext context, WidgetRef ref) { 
     final registry = ref.watch(providersRegistry);
+		AuthRepository auth = AuthRepository(context, ref, registry);
+
     final emailController = registry.getController('email', text: data?['email'] ?? '');
     final resetPasswordBtnProvider =
         registry.addStateProvider<String>('resetPasswordBtn', 'Reset Password');
@@ -52,10 +53,8 @@ class ForgotPassword extends ConsumerWidget {
                       width: double.infinity,
                       child: ElevatedButton(
                           child: Text(resetPasswordBtnText),
-                          onPressed: () async {
-                            AuthRepository forgotPassReq =
-                                AuthRepository(context, ref);
-                            await forgotPassReq.toggleSubmitBtn(
+                          onPressed: () async { 
+                            await auth.toggleSubmitBtn(
                               updateLabel: (label) {
                                 ref
                                     .read(resetPasswordBtnProvider.notifier)
@@ -65,7 +64,7 @@ class ForgotPassword extends ConsumerWidget {
                                   ref.watch(resetPasswordBtnProvider),
                               temporaryLabel: "Sending...",
                               callbackFunc: () async {
-                                await forgotPassReq.resetPassword(
+                                await auth.resetPassword(
                                   email: emailController.text.trim(),
                                 );
                               },

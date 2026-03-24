@@ -3,9 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeScreen extends ConsumerWidget {
-	
+	final Map<String, dynamic>? data;
 	// constructor
-	const HomeScreen({super.key});
+	const HomeScreen({super.key, this.data});
 
 	@override
 	Widget build(BuildContext context, WidgetRef ref) {

@@ -1,8 +1,41 @@
+import 'dart:io';
 import 'dart:convert';
 import 'package:intl/intl.dart';
+import 'package:flutter/foundation.dart';
 import 'package:mvcflutter/config/session_manager.dart';
 
 class CI {
+  /// Parses and returns the 
+  /// type/version of the running 
+  /// device
+  String getCurrentPlatform() {
+    if (kIsWeb) {
+      return 'web';
+    }
+
+    if (Platform.isAndroid) {
+      return 'android';
+    }
+
+    if (Platform.isIOS) {
+      return 'ios';
+    }
+
+    if (Platform.isWindows) {
+      return 'windows';
+    }
+
+    if (Platform.isMacOS) {
+      return 'macos';
+    }
+
+    if (Platform.isLinux) {
+      return 'linux';
+    }
+
+    return 'unknown';
+  }
+  
   /// Pretty prints JSON data with indentation
   String prettyJson(dynamic data) {
     const encoder = JsonEncoder.withIndent('  ');

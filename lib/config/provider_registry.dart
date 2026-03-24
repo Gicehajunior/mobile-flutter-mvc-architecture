@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/legacy.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart'; 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mvcflutter/config/app_logger.dart';
 
 class ProviderRegistry {
   final Map<String, TextEditingController> _controllers = {};
@@ -45,13 +46,25 @@ class ProviderRegistry {
   }
 
   StateProvider<T>? getStateProvider<T>(String key) {
-    return _providers[key] as StateProvider<T>?;
+    final provider = _providers[key];
+    if (provider == null) return null;
+    
+    try {
+      return provider as StateProvider<T>;
+    } catch (e) { 
+      return provider as dynamic; 
+    }
   }
+  
+  void updateStateProvider<T>(WidgetRef ref, String key, T value) { 
+    // Get the provider without strict type forcing initially
+    final provider = _providers[key];
 
-  void updateStateProvider<T>(WidgetRef ref, String key, T value) {
-    final provider = getStateProvider<T>(key);
-    if (provider != null) {
-      ref.read(provider.notifier).state = value;
+    if (provider == null) { 
+      addStateProvider<T>(key, value);
+      Log.debug('Provider [$key] created with initial value.');
+    } else {  
+      ref.read((provider as StateProvider).notifier).state = value;
     }
   }
 
@@ -104,13 +117,16 @@ class ProviderRegistry {
     return addStateProvider<int>(key, initialValue);
   }
 
-  void disposeProviders(WidgetRef ref) { 
+  void disposeProviders(WidgetRef ref) {
+    Log.debug('Disposing disposable providers (invalidate)');
+
     /// Invalidate disposable state providers
     for (final entry in _providers.entries) {
       final key = entry.key;
       final provider = entry.value;
 
-      if (_disposableKeys.contains(key)) { 
+      if (_disposableKeys.contains(key)) {
+        Log.debug('Invalidate Provider [$key]: $provider');
         ref.invalidate(provider);
       }
     }
@@ -120,19 +136,30 @@ class ProviderRegistry {
       final key = entry.key;
       final provider = entry.value;
 
-      if (_disposableKeys.contains(key)) { 
+      if (_disposableKeys.contains(key)) {
+        Log.debug('Invalidate Async Provider [$key]: $provider');
         ref.invalidate(provider);
       }
     }
   }
 
-  void refreshAllProviders(WidgetRef ref) { 
+  void refreshAllProviders(WidgetRef ref) {
+    Log.debug('Refreshing all providers');
+
     for (final provider in _providers.values) {
       final _ = ref.refresh(provider);
     }
 
     for (final provider in _asyncProviders.values) {
       final _ = ref.refresh(provider);
+    }
+  }
+
+  void invalidateProvider(WidgetRef ref, String key) { 
+    final provider = _providers[key] ?? _asyncProviders[key];
+  
+    if (provider != null) { 
+      ref.invalidate(provider); // preferred over refresh...
     }
   }
 

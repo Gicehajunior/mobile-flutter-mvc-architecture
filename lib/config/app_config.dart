@@ -10,6 +10,8 @@ final Map<String, dynamic> configList = {
   'appName': dotenv.env['APP_NAME'] ?? 'MVC Application',
   'appEnv': dotenv.env['APP_ENV'] ?? 'production',
   'appVersion': dotenv.env['APP_VERSION'] ?? '1.0.0',
+  'clientToken': 'f7a1b2c3d4e5f67890abcd1234567890abcdef1234567890abcdef1234567890',
+  
   'appLogoPath': 'public/assets/logo/svg/nesthub-logo.svg',
 
   // Base asset paths

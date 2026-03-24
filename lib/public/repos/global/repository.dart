@@ -2,13 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvcflutter/config/app_config.dart';
+import 'package:mvcflutter/public/repos/lang/en.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mvcflutter/config/session_manager.dart';
+import 'package:mvcflutter/config/provider_registry.dart';
+// import 'package:mvcflutter/public/repos/methods/global.dart';
 
 class Repository {
+
   final WidgetRef ref;
+
   final BuildContext context;
 
-  const Repository(this.context, this.ref);
+  final ProviderRegistry registry;
+
+  const Repository(this.context, this.ref, this.registry);
 
   String public(String key, [String relativePath = '']) {
     final basePaths = configList['BasePaths'] as Map<String, String>?;
@@ -74,5 +82,29 @@ class Repository {
         });
 
     return dialog;
+  }
+
+  Future<void> logout(ProviderRegistry registry) async {
+    final sm = SessionManager();
+
+    await sm.clearAll();
+
+    // Check ONLY auth token
+    final token = await sm.getSession(key: SessionManager.tokenKey);   
+
+    if (token != null && token.isNotEmpty) {
+      alert(
+        status: 'error',
+        title: 'Logout Denied',
+        message: lang['logoutFailed'] ?? 'Logout failed. Please try again.',
+      );
+      return;
+    }
+
+    // clear provider cache
+    registry.updateStateProvider(ref, 'session', null); 
+
+    if (!context.mounted) return;
+    context.go('/login');
   }
 }

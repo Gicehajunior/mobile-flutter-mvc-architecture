@@ -8,9 +8,12 @@ import 'package:mvcflutter/presentation/screens/home/home_screen.dart';
 // the screen requires parameters, ensure to pass them via the data map.
 // sometimes returns data which can be null hence the Map<String, dynamic>? type.
 final Map<String, Widget Function(Map<String, dynamic>? data)> viewsList = {
+    // Home screen mappings
+    'home/home_screen': (data) => HomeScreen(data: data ?? {}),
+
+    // Auth screen mappings
     'auth/login_screen': (data) => LoginScreen(),
     'auth/forgot_password': (data) => ForgotPassword(),
-    'home/home_screen': (data) => HomeScreen(),
 
     // add more screens mapping below...
 };
