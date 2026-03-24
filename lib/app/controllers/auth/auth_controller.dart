@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:jwt_decoder/jwt_decoder.dart'; 
+import 'package:mvcflutter/config/app_config.dart';
 import 'package:mvcflutter/config/controller.dart';
 import 'package:mvcflutter/config/view_request.dart';
-import 'package:mvcflutter/config/app_config.dart';
 import 'package:mvcflutter/config/session_manager.dart';
 import 'package:mvcflutter/public/repos/lang/en.dart';
 import 'package:mvcflutter/config/mvc_exception.dart'; 
