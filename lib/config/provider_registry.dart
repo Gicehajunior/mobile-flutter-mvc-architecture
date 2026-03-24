@@ -156,9 +156,10 @@ class ProviderRegistry {
   }
 
   void invalidateProvider(WidgetRef ref, String key) { 
-    final provider = _providers[key] ?? _asyncProviders[key] ?? null;
+    final provider = _providers[key] ?? _asyncProviders[key];
+  
     if (provider != null) { 
-      final _ = ref?.refresh(provider);
+      ref.invalidate(provider); // preferred over refresh...
     }
   }
 

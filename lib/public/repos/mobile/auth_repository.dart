@@ -1,10 +1,8 @@
-import 'package:go_router/go_router.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mvcflutter/config/app_logger.dart';
+import 'package:go_router/go_router.dart'; 
+// import 'package:mvcflutter/config/app_logger.dart';
 import 'package:mvcflutter/config/mvc_exception.dart';
-import 'package:mvcflutter/public/repos/lang/en.dart';
-import 'package:mvcflutter/config/provider_registry.dart';
-import 'package:mvcflutter/public/repos/methods/global.dart';
+import 'package:mvcflutter/public/repos/lang/en.dart'; 
+// import 'package:mvcflutter/public/repos/methods/global.dart';
 import 'package:mvcflutter/public/repos/global/repository.dart'; 
 import 'package:mvcflutter/app/controllers/auth/auth_controller.dart';
 
@@ -52,7 +50,7 @@ class AuthRepository extends Repository {
       await Future.delayed(const Duration(seconds: 3));
 
       if (!context.mounted) return;
-      final String? targetRoute = response?['route'];
+      final String? targetRoute = response['route'];
       if (targetRoute != null && targetRoute.isNotEmpty) {
         context.push(targetRoute);
       }
@@ -159,7 +157,7 @@ class AuthRepository extends Repository {
 
       // Navigate to dashboard or login
       if (!context.mounted) return;
-      final String? targetRoute = response?['route'];
+      final String? targetRoute = response['route'];
       if (targetRoute != null && targetRoute.isNotEmpty) {
         context.push(targetRoute);
       }

@@ -6,7 +6,7 @@ import 'package:mvcflutter/public/repos/lang/en.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mvcflutter/config/session_manager.dart';
 import 'package:mvcflutter/config/provider_registry.dart';
-import 'package:mvcflutter/public/repos/methods/global.dart';
+// import 'package:mvcflutter/public/repos/methods/global.dart';
 
 class Repository {
 
