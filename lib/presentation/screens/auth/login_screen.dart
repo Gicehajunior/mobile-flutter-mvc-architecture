@@ -12,6 +12,7 @@ class LoginScreen extends ConsumerWidget {
 	@override
 	Widget build(BuildContext context, WidgetRef ref) { 
 		final registry = ref.watch(providersRegistry);
+		AuthRepository auth = AuthRepository(context, ref, registry);
 
 		final emailController = registry.getController('email', text: data?['email'] ?? '');
 		final passwordController = registry.getController('password', text: data?['password'] ?? ''); 
@@ -94,7 +95,6 @@ class LoginScreen extends ConsumerWidget {
 									width: double.infinity, 
 									child: ElevatedButton(
 										onPressed: () async {  
-											AuthRepository auth = AuthRepository(context, ref);
 											await auth.toggleSubmitBtn(
 												updateLabel: (label) {
 													ref.read(loginBtnProvider.notifier).state = label;
