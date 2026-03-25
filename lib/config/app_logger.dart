@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:logger/logger.dart';
 import 'package:mvcflutter/config/app_config.dart';
 
@@ -58,6 +59,20 @@ class Log extends Logger {
   static void simple(dynamic message) {
     if (_canLog()) {
       Logger(printer: SimplePrinter(colors: true)).t(message);
+    }
+  }
+
+  static void json(dynamic data, {String tag = "DATA"}) {
+    if (_canLog()) {
+      try {
+        const JsonEncoder encoder = JsonEncoder.withIndent('  ');
+        final String formatted = encoder.convert(data); 
+
+        final Logger loggerNoStack = Logger(printer: PrettyPrinter(methodCount: 0));
+        loggerNoStack.i("[$tag]:\n$formatted");
+      } catch (e) {
+        _instance.e("Failed to encode JSON for logging: $e");
+      }
     }
   }
 }
