@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart'; 
+import 'package:mvcflutter/config/app_logger.dart';
 import 'package:mvcflutter/config/view_factory.dart';
 import 'package:mvcflutter/config/view_request.dart';
 import 'package:mvcflutter/config/app_request.dart';
@@ -21,45 +22,72 @@ class AppRouter {
           final request = Request(state); 
           final result = controllerRequest(request); 
 
-          // Extract path parameters from the route
-          final pathParams = state.pathParameters;
-          
-          // Extract query parameters from the route
-          final queryParams = state.uri.queryParameters;
-          
-          // Combine all route parameters
-          final routeData = {
-            ...pathParams,
-            ...queryParams,
-          };
+          // Check if the controller returned a Future (Async)
+          if (result is Future) {
+            return FutureBuilder(
+              future: result,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Scaffold(
+                    body: Center(
+                      child: CircularProgressIndicator(color: Colors.blue),
+                    ),
+                  );
+                }
 
-          // Handle ViewRequest
-          if (result is ViewRequest) {
-            // If request already has data, merge with route parameters
-            // If request has no data, use route parameters as data
-            final Map<String, dynamic>? requestData = result.data;
-            final Map<String, dynamic> mergedData = requestData != null 
-                ? {...requestData, ...routeData}
-                : routeData;
-            
-            // Create updated request with correct constructor format
-            final updatedRequest = mergedData.isNotEmpty
-                ? ViewRequest(result.key, data: mergedData)
-                : ViewRequest(result.key);
-              
-            return ViewFactory.createView(updatedRequest);
+                if (snapshot.hasError) {
+                  Log.error("Router Async Error: ${snapshot.error}");
+                  return Scaffold(
+                    body: Center(child: Text("Error: ${snapshot.error}")),
+                  );
+                }
+
+                // Process the resolved result once the Future completes
+                return _processResult(snapshot.data, state);
+              },
+            );
           }
 
-          // directly return widget
-          if (result is Widget) {
-            return result;
-          }
-
-          return result as Widget? ??
-              Center(
-                child: Text("Route returned non-widget data: $result"),
-              );
+          // Handle Sync results immediately
+          return _processResult(result, state);
         },
+      ),
+    );
+  }
+
+  /// Handle ViewRequest and Widget results gracefully!
+  Widget _processResult(dynamic result, GoRouterState state) {
+    final pathParams = state.pathParameters;
+    final queryParams = state.uri.queryParameters;
+    
+    final routeData = {
+      ...pathParams,
+      ...queryParams,
+    };
+
+    if (result is ViewRequest) {
+      final Map<String, dynamic>? requestData = result.data;
+      final Map<String, dynamic> mergedData = requestData != null 
+          ? {...requestData, ...routeData}
+          : routeData;
+      
+      Log.debug("DATA SNAPSHOT RESPONSE FROM THE REQUEST ENTITY: $mergedData");
+
+      final updatedRequest = mergedData.isNotEmpty
+          ? ViewRequest(result.key, data: mergedData)
+          : ViewRequest(result.key);
+      
+      return ViewFactory.createView(updatedRequest);
+    }
+
+    if (result is Widget) {
+      return result;
+    }
+
+    // Final fallback to avoid casting errors
+    return Scaffold(
+      body: Center(
+        child: Text("Route error: Expected Widget or ViewRequest, got $result"),
       ),
     );
   }
