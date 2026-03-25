@@ -71,7 +71,7 @@ class AppRouter {
           ? {...requestData, ...routeData}
           : routeData;
       
-      Log.debug("DATA SNAPSHOT RESPONSE FROM THE REQUEST ENTITY: ${mergedData}");
+      Log.debug("DATA SNAPSHOT RESPONSE FROM THE REQUEST ENTITY: $mergedData");
 
       final updatedRequest = mergedData.isNotEmpty
           ? ViewRequest(result.key, data: mergedData)
