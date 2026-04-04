@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mvcflutter/presentation/screens/auth/login_screen.dart';
-import 'package:mvcflutter/presentation/screens/auth/forgot_password.dart';
-import 'package:mvcflutter/presentation/screens/home/home_screen.dart';
+import 'package:nexus/presentation/screens/auth/login_screen.dart';
+import 'package:nexus/presentation/screens/auth/forgot_password.dart';
+import 'package:nexus/presentation/screens/home/home_screen.dart';
 
 // A mapping of view keys to their corresponding widget constructors.
 // Add the data params on the screen class constructors accordingly, i.e if 

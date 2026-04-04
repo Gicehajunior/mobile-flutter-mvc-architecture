@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mvcflutter/config/app_config.dart';
-import 'package:mvcflutter/config/app_logger.dart';
+import 'package:nexus/config/app_config.dart';
+import 'package:nexus/config/app_logger.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart'; 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mvcflutter/app/providers/router_provider.dart';
+import 'package:nexus/app/providers/router_provider.dart';
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});

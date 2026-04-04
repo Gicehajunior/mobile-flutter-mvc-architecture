@@ -1,6 +1,6 @@
-import 'package:mvcflutter/config/controller.dart';
-import 'package:mvcflutter/config/app_request.dart';
-import 'package:mvcflutter/config/view_request.dart';
+import 'package:nexus/config/controller.dart';
+import 'package:nexus/config/app_request.dart';
+import 'package:nexus/config/view_request.dart';
 
 class HomeController extends CI { 
     ViewRequest homeView(Request request) { 

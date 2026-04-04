@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:nexus/config/app_logger.dart'; 
 import 'package:jwt_decoder/jwt_decoder.dart'; 
-import 'package:mvcflutter/config/app_config.dart';
-import 'package:mvcflutter/config/controller.dart';
-import 'package:mvcflutter/config/view_request.dart';
-import 'package:mvcflutter/config/session_manager.dart';
-import 'package:mvcflutter/public/repos/lang/en.dart';
-import 'package:mvcflutter/config/mvc_exception.dart'; 
-import 'package:mvcflutter/config/app_logger.dart'; 
+import 'package:nexus/config/app_config.dart';
+import 'package:nexus/config/controller.dart';
+import 'package:nexus/config/view_request.dart';
+import 'package:nexus/config/session_manager.dart';
+import 'package:nexus/public/repos/lang/en.dart';
+import 'package:nexus/config/mvc_exception.dart'; 
 
 class AuthController extends CI {
     String? email;

@@ -1,10 +1,10 @@
 import 'package:go_router/go_router.dart'; 
-// import 'package:mvcflutter/config/app_logger.dart';
-import 'package:mvcflutter/config/mvc_exception.dart';
-import 'package:mvcflutter/public/repos/lang/en.dart'; 
-// import 'package:mvcflutter/public/repos/methods/global.dart';
-import 'package:mvcflutter/public/repos/global/repository.dart'; 
-import 'package:mvcflutter/app/controllers/auth/auth_controller.dart';
+// import 'package:nexus/config/app_logger.dart';
+import 'package:nexus/config/mvc_exception.dart';
+import 'package:nexus/public/repos/lang/en.dart'; 
+// import 'package:nexus/public/repos/methods/global.dart';
+import 'package:nexus/public/repos/global/repository.dart'; 
+import 'package:nexus/app/controllers/auth/auth_controller.dart';
 
 class AuthRepository extends Repository {
   late final AuthController _authController;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mvcflutter/app/providers/registry_provider.dart';
-import 'package:mvcflutter/public/repos/mobile/auth_repository.dart';
+import 'package:nexus/app/providers/registry_provider.dart';
+import 'package:nexus/public/repos/mobile/auth_repository.dart';
 
 class ForgotPassword extends ConsumerWidget {
   final Map<String, dynamic>? data;
@@ -55,10 +55,10 @@ class ForgotPassword extends ConsumerWidget {
                           child: Text(resetPasswordBtnText),
                           onPressed: () async { 
                             await auth.toggleSubmitBtn(
-                              updateLabel: (label) {
-                                ref
-                                    .read(resetPasswordBtnProvider.notifier)
-                                    .state = label;
+                              updateLabel: (label, loading) async { 
+                                if (resetPasswordBtnProvider != null) { 
+                                  ref.read(resetPasswordBtnProvider.notifier).state = label; 
+                                }
                               },
                               currentBtnText:
                                   ref.watch(resetPasswordBtnProvider),
