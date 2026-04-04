@@ -285,7 +285,7 @@ class ProviderRegistry {
     final provider = _providers[key] ?? _asyncProviders[key];
     if (provider != null) {
       Log.debug("INVALIDATING SESSION PROVIDER: $provider");
-      final _ = ref?.refresh(provider);
+      final _ = ref.refresh(provider);
     }
   }
 }
