@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:logger/logger.dart';
-import 'package:mvcflutter/config/app_config.dart';
+import 'package:nexus/config/app_config.dart';
 
 class Log extends Logger {
   Log._internal()

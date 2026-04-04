@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mvcflutter/config/app_config.dart';
-import 'package:mvcflutter/public/repos/lang/en.dart';
+import 'package:nexus/config/app_config.dart';
+import 'package:nexus/public/repos/lang/en.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mvcflutter/config/session_manager.dart';
-import 'package:mvcflutter/config/provider_registry.dart';
-// import 'package:mvcflutter/public/repos/methods/global.dart';
+import 'package:nexus/config/session_manager.dart';
+import 'package:nexus/config/provider_registry.dart';
+import 'package:nexus/public/repos/methods/global.dart';
 
 class Repository {
 
@@ -59,7 +59,7 @@ class Repository {
       updateLabel(original, false);
     }
   }
-  
+
   Future<void> alert({
     required String status,
     required String title,
@@ -97,6 +97,9 @@ class Repository {
                   onPressed: () {
                     if (onConfirm != null) {
                       onConfirm();
+                    }
+                    else {
+                      context.pop();
                     }
                   },
                 ),

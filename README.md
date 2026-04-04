@@ -69,7 +69,7 @@ flutter run
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mvcflutter/public/index.dart'; 
+import 'package:nexus/public/index.dart'; 
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();

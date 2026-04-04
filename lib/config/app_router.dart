@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart'; 
-import 'package:mvcflutter/config/app_logger.dart';
-import 'package:mvcflutter/config/view_factory.dart';
-import 'package:mvcflutter/config/view_request.dart';
-import 'package:mvcflutter/config/app_request.dart';
+import 'package:nexus/config/app_logger.dart';
+import 'package:nexus/config/view_factory.dart';
+import 'package:nexus/config/view_request.dart';
+import 'package:nexus/config/app_request.dart';
 
 class AppRouter {
   final List<GoRoute> _routes = [];

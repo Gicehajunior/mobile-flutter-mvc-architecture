@@ -1,12 +1,67 @@
+import 'dart:io';
+import 'dart:convert'; 
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mvcflutter/config/app_logger.dart'; 
-import 'package:mvcflutter/config/provider_registry.dart';
-import 'package:mvcflutter/config/session_manager.dart'; 
+import 'package:nexus/config/app_logger.dart'; 
+import 'package:nexus/config/session_manager.dart'; 
+import 'package:nexus/config/provider_registry.dart';
+import 'package:nexus/public/repos/methods/global.dart';
 
-Future<void> wait({int time = 2}) {
-  return Future.delayed(Duration(seconds: time));
+/// Parses and returns the 
+/// type/version of the running 
+/// device
+String getCurrentPlatform() {
+  if (kIsWeb) {
+    return 'web';
+  }
+
+  if (Platform.isAndroid) {
+    return 'android';
+  }
+
+  if (Platform.isIOS) {
+    return 'ios';
+  }
+
+  if (Platform.isWindows) {
+    return 'windows';
+  }
+
+  if (Platform.isMacOS) {
+    return 'macos';
+  }
+
+  if (Platform.isLinux) {
+    return 'linux';
+  }
+
+  return 'unknown';
+}
+
+/// Pretty prints JSON data with indentation
+String prettyJson(dynamic data) {
+  const encoder = JsonEncoder.withIndent('  ');
+  return encoder.convert(data);
+}
+
+Future<void> wait({int time = 2, String type = 'seconds'}) async {
+  Duration duration;
+
+  switch (type.toLowerCase()) {
+    case 'minutes':
+      duration = Duration(minutes: time);
+      break;
+    case 'milliseconds':
+      duration = Duration(milliseconds: time);
+      break;
+    case 'seconds':
+    default:
+      duration = Duration(seconds: time);
+  }
+
+  return await Future.delayed(duration);
 }
 
 double screenWidth(BuildContext context) {
@@ -95,17 +150,12 @@ void setTimeInterval(
 
   // Kick off after build completes
   Future.microtask(tick);
-}   
-
-String capitalizeFirst(String value) {
-  if (value.isEmpty) return value;
-  return value[0].toUpperCase() + value.substring(1);
 }
 
-String capitalizeWords(String text) {
-  return text
-      .split(' ')
-      .map((word) =>
-          word.isEmpty ? word : word[0].toUpperCase() + word.substring(1))
-      .join(' ');
+String getInitials(String? name) {
+  if (name == null || name.trim().isEmpty) return '?';
+  final parts = name.trim().split(RegExp(r'\s+'));
+  return parts.length > 1 
+    ? '${parts[0][0]}${parts[1][0]}'.toUpperCase() 
+    : parts[0][0].toUpperCase();
 }
