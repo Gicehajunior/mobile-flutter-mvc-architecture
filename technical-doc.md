@@ -4,7 +4,7 @@
 
 ## 1. Purpose of This Document
 
-This document describes the architectural design, engineering principles, and implementation patterns used in the **mobile-flutter-mvc-architecture** project.
+This document describes the architectural design, engineering principles, and implementation patterns used in the **nexus** project.
 
 It is intended for:
 
