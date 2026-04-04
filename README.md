@@ -47,10 +47,10 @@ Welcome gorgeous! This project is a comprehensive Flutter application built usin
 ### Quick Start
 ```bash
 # Clone the repository
-git clone https://github.com/Gicehajunior/mobile-flutter-mvc-architecture.git
+git clone https://github.com/Gicehajunior/nexus.git
 
 # Navigate to the project directory
-cd mobile-flutter-mvc-architecture
+cd nexus
 
 # Get dependencies
 flutter pub get
@@ -91,7 +91,7 @@ Future main() async {
 
 ## Project Structure
 ```
-mobile-flutter-mvc-architecture/
+nexus/
 ├── android/
 ├── ios/
 ├── lib/
@@ -161,8 +161,8 @@ We welcome contributions! Here's how you can get started:
 ### Development Setup
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/Gicehajunior/mobile-flutter-mvc-architecture.git
-   cd mobile-flutter-mvc-architecture
+   git clone https://github.com/Gicehajunior/nexus.git
+   cd nexus
    ```
 
 2. **Get Dependencies**
@@ -203,15 +203,15 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
   - Add support for more platforms (e.g., Windows, macOS).
   - Improve state management with Riverpod.
   - Enhance Firebase integration.
-- **Known Issues**: [List of known issues](https://github.com/Gicehajunior/mobile-flutter-mvc-architecture/issues)
-- **Future Improvements**: [List of future improvements](https://github.com/Gicehajunior/mobile-flutter-mvc-architecture/issues)
+- **Known Issues**: [List of known issues](https://github.com/Gicehajunior/nexus/issues)
+- **Future Improvements**: [List of future improvements](https://github.com/Gicehajunior/nexus/issues)
 
 ---
 
 **Badges:** 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Gicehajunior/mobile-flutter-mvc-architecture/blob/main/.License)
-[![Version](https://img.shields.io/badge/Version-1.0.0+1-blue.svg)](https://github.com/Gicehajunior/mobile-flutter-mvc-architecture/releases)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Gicehajunior/nexus/blob/main/.License)
+[![Version](https://img.shields.io/badge/Version-1.0.0+1-blue.svg)](https://github.com/Gicehajunior/nexus/releases)
 
 ---
 
-Getting started with the `mobile-flutter-mvc-architecture` project. Happy coding!
+Getting started with the `nexus` project. Happy coding!
