@@ -110,7 +110,7 @@ class ProviderRegistry {
 
   void updateControllerText(String key, String newText) {
     final controller = _controllers[key];
-    if (controller != null && controller is TextEditingController) { 
+    if (controller is TextEditingController) { 
       if (controller.text != newText) {
         controller.text = newText;
         Log.debug('Updated controller [$key] text to: $newText');
@@ -251,13 +251,12 @@ class ProviderRegistry {
       }
 
       // Handle Controllers (Flutter Lifecycle)
-      final controller = _controllers[key];
-      if (controller != null) { 
-        if (controller is Listenable) {  
-          (controller as dynamic).dispose(); 
-        }
-        _controllers.remove(key);
+      final controller = _controllers[key]; 
+      if (controller is Listenable) {  
+        (controller as dynamic).dispose(); 
       }
+
+      _controllers.remove(key); 
       
       Log.debug('Manually cleared: $key');
     }
@@ -283,7 +282,7 @@ class ProviderRegistry {
   }
 
   void invalidateProvider(WidgetRef ref, String key) { 
-    final provider = _providers[key] ?? _asyncProviders[key] ?? null;
+    final provider = _providers[key] ?? _asyncProviders[key];
     if (provider != null) {
       Log.debug("INVALIDATING SESSION PROVIDER: $provider");
       final _ = ref?.refresh(provider);

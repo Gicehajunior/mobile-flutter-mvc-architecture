@@ -144,11 +144,10 @@ class Repository {
       return;
     }
 
-    if (!context.mounted) return;
-
     registry.updateStateProvider<bool>(ref, 'isLoggingOutProvider', true); 
     await wait(time: 300, type: 'milliseconds');
 
+    if (!context.mounted) return;
     context.go('/login');
   }
 }

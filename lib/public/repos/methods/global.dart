@@ -6,8 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nexus/config/app_logger.dart'; 
 import 'package:nexus/config/session_manager.dart'; 
-import 'package:nexus/config/provider_registry.dart';
-import 'package:nexus/public/repos/methods/global.dart';
+import 'package:nexus/config/provider_registry.dart'; 
 
 /// Parses and returns the 
 /// type/version of the running 
