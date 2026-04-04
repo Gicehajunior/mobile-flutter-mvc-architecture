@@ -1,10 +1,10 @@
 # Mobile nexus architecture - Flutter, MVCF
 
 ## Overview
-Welcome gorgeous! This project a configuration-driven, runtime-resolved architecture combines MVC structure with reactive state management and centralized orchestration. It provides a robust framework for developing mobile applications with a clean separation of concerns, making it easier to manage and scale your codebase.
+Welcome gorgeous! This project is a configuration-driven, runtime-resolved architecture combines MVC structure with reactive state management and centralized orchestration. It provides a robust framework for developing mobile applications with a clean separation of concerns, making it easier to manage and scale your codebase.
 
 ### Key Features
-- **Nexus architecture**: Clear separation of concerns between repositories, views, and controllers.
+- **nexus architecture**: Clear separation of concerns between repositories, views, and controllers.
 - **Flutter Integration**: Leverages the power of Flutter for building beautiful, high-performance mobile applications.
 - **Firebase Integration**: Seamless integration with Firebase for authentication, database, and other cloud services.
 - **Extensive Documentation**: Comprehensive documentation to help you get started quickly.
