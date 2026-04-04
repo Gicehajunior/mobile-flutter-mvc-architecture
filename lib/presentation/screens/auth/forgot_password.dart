@@ -55,7 +55,7 @@ class ForgotPassword extends ConsumerWidget {
                           child: Text(resetPasswordBtnText),
                           onPressed: () async { 
                             await auth.toggleSubmitBtn(
-                              updateLabel: (label) {
+                              updateLabel: (label, loading) {
                                 ref
                                     .read(resetPasswordBtnProvider.notifier)
                                     .state = label;

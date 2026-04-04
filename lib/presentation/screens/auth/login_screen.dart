@@ -96,7 +96,7 @@ class LoginScreen extends ConsumerWidget {
 									child: ElevatedButton(
 										onPressed: () async {  
 											await auth.toggleSubmitBtn(
-												updateLabel: (label) {
+												updateLabel: (label, loading) {
 													ref.read(loginBtnProvider.notifier).state = label;
 												},
 												currentBtnText: loginBtnText,

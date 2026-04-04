@@ -42,6 +42,24 @@ class Repository {
     );
   }
 
+  Future<void> toggleSubmitBtn({
+    required Future<void> Function(String label, bool loading) updateLabel,
+    required String currentBtnText,
+    String temporaryLabel = "Processing...",
+    required Future<void> Function() callbackFunc
+  }) async {
+    final original = currentBtnText;
+
+    await updateLabel(temporaryLabel, true); 
+    await WidgetsBinding.instance.endOfFrame;
+
+    try { 
+      await callbackFunc();
+    } finally {
+      updateLabel(original, false);
+    }
+  }
+  
   Future<void> alert({
     required String status,
     required String title,
