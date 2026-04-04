@@ -1,17 +1,17 @@
-# Mobile MVC architecture - Flutter, MVCF
+# Mobile nexus architecture - Flutter, MVCF
 
 ## Overview
-Welcome gorgeous! This project is a comprehensive Flutter application built using the Model-View-Controller (MVC) architecture. It provides a robust framework for developing mobile applications with a clean separation of concerns, making it easier to manage and scale your codebase.
+Welcome gorgeous! This project a configuration-driven, runtime-resolved architecture combines MVC structure with reactive state management and centralized orchestration. It provides a robust framework for developing mobile applications with a clean separation of concerns, making it easier to manage and scale your codebase.
 
 ### Key Features
-- **MVC Architecture**: Clear separation of concerns between models, views, and controllers.
+- **Nexus architecture**: Clear separation of concerns between repositories, views, and controllers.
 - **Flutter Integration**: Leverages the power of Flutter for building beautiful, high-performance mobile applications.
 - **Firebase Integration**: Seamless integration with Firebase for authentication, database, and other cloud services.
 - **Extensive Documentation**: Comprehensive documentation to help you get started quickly.
 
 ### Who This Project Is For
 - Developers looking to build scalable and maintainable mobile applications.
-- Teams that want to leverage the MVC architecture for better code organization.
+- Teams that want to leverage the nexus architecture for better code organization.
 - Flutter enthusiasts who want to explore advanced features and best practices.
 
 ## Features
